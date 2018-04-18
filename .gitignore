@@ -179,4 +179,4 @@ gradle.properties
 ## for deployement
 deployment/*.jks
 deployment/*.keystore
-deployment/signin.gradle
+deployment/signing.gradle
