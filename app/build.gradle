@@ -25,9 +25,14 @@ dependencies {
     implementation deps.support.constraint
     kapt deps.databinding_compiler
 
-
     //test dependencies
     testImplementation deps.junit
     androidTestImplementation deps.support.test_runner
     androidTestImplementation deps.support.espresso_core
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "${rootProject.name}-${variant.flavorName ? variant.flavorName + "-" : ""}${variant.buildType.name}-${variant.versionName}.apk"
+    }
 }
