@@ -177,6 +177,6 @@ xcuserdata/
 gradle.properties
 
 ## for deployement
-deployment/*.jks
-deployment/*.keystore
-deployment/signing.gradle
+##deployment/*.jks
+##deployment/*.keystore
+##deployment/signing.gradle
