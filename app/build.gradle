@@ -23,7 +23,10 @@ dependencies {
     implementation deps.kotlin.stdlib
     implementation deps.support.app_compat
     implementation deps.support.constraint
+    implementation deps.lifecycle.extensions
+
     kapt deps.databinding_compiler
+    kapt deps.lifecycle.compiler
 
     //test dependencies
     testImplementation deps.junit
