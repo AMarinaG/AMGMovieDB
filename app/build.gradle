@@ -24,6 +24,7 @@ dependencies {
     implementation deps.support.app_compat
     implementation deps.support.constraint
     implementation deps.lifecycle.extensions
+    implementation deps.timber
 
     kapt deps.databinding_compiler
     kapt deps.lifecycle.compiler
