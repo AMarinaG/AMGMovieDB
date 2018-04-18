@@ -3,6 +3,7 @@ package com.amarinag.amgmoviedb
 import android.app.Activity
 import android.app.Application
 import com.amarinag.amgmoviedb.di.AppInjector
+import com.facebook.stetho.Stetho
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -22,6 +23,7 @@ class App : Application(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
         AppInjector.init(this)
+        Stetho.initializeWithDefaults(this)
         Timber.plant(Timber.DebugTree())
     }
 
