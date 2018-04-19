@@ -22,7 +22,7 @@ data class Movie(
         val video: Boolean = false,
         @SerializedName("vote_average")
         @Expose
-        val voteAverage: Int = 0,
+        val voteAverage: Float = 0.toFloat(),
         @SerializedName("title")
         @Expose
         val title: String? = null,
