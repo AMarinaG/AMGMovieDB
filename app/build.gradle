@@ -25,6 +25,7 @@ dependencies {
     implementation deps.kotlin.stdlib
     implementation deps.support.app_compat
     implementation deps.support.constraint
+    implementation deps.support.design
     implementation deps.lifecycle.extensions
     implementation deps.timber
     implementation deps.dagger.runtime
