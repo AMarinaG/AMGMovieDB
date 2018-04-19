@@ -23,11 +23,9 @@ class MovieAdapter(private val clickListener: (Movie) -> Unit) : ListAdapter<Mov
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(Movie(position, "Name $position"), clickListener)
+        holder.bind(getItem(position), clickListener)
 
     }
-
-    override fun getItemCount() = 15
 
     inner class MovieViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie, clickListener: (Movie) -> Unit) {
