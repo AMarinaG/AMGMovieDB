@@ -17,7 +17,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
-        val adapter = MovieAdapter({movie -> Timber.d("Has pulsado la peli: %s", movie) })
+        val adapter = MovieAdapter({ movie -> Timber.d("Has pulsado la peli: %s", movie) })
         binding.rvMovies.layoutManager = GridLayoutManager(this, 2)
         binding.rvMovies.adapter = adapter
     }
