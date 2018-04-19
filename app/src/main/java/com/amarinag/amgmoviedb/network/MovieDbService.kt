@@ -1,7 +1,8 @@
 package com.amarinag.amgmoviedb.network
 
-import okhttp3.ResponseBody
+import com.amarinag.amgmoviedb.model.Popular
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 
 /**
@@ -12,5 +13,5 @@ import retrofit2.http.GET
  */
 interface MovieDbService {
     @GET("popular")
-    fun getPopularMovies(): Call<ResponseBody>
+    fun getPopularMovies(): Call<Response<Popular>>
 }
