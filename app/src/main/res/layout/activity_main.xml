@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
-
-  <android.support.constraint.ConstraintLayout
+  <android.support.design.widget.CoordinatorLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       tools:context=".ui.main.MainActivity"
@@ -17,5 +16,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
 
-  </android.support.constraint.ConstraintLayout>
+  </android.support.design.widget.CoordinatorLayout>
 </layout>
