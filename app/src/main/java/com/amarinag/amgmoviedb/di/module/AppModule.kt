@@ -34,8 +34,8 @@ class AppModule {
     @Singleton
     internal fun provideOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
-                .readTimeout(120, TimeUnit.SECONDS)
-                .writeTimeout(120, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
         builder.addNetworkInterceptor(StethoInterceptor())
         return builder.build()
     }
