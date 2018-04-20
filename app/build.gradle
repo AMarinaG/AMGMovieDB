@@ -40,11 +40,14 @@ dependencies {
     implementation deps.okhttp3.logging_interceptor
     implementation deps.rxjava2
     implementation deps.rx_android
+    implementation deps.glide.runtime
+    implementation deps.glide.okhttp3_integration
 
     kapt deps.dagger.compiler
     kapt deps.dagger.android_support_compiler
     kapt deps.databinding_compiler
     kapt deps.lifecycle.compiler
+    kapt deps.glide.compiler
 
     //test dependencies
     testImplementation deps.junit
