@@ -33,10 +33,13 @@ dependencies {
     implementation deps.dagger.android_support
     implementation deps.retrofit.runtime
     implementation deps.retrofit.gson
+    implementation deps.retrofit.rx2adapter
     implementation deps.stetho.core
     implementation deps.stetho.okhttp3
     implementation deps.okhttp3.okhttp
     implementation deps.okhttp3.logging_interceptor
+    implementation deps.rxjava2
+    implementation deps.rx_android
 
     kapt deps.dagger.compiler
     kapt deps.dagger.android_support_compiler
