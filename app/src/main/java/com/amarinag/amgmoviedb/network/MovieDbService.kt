@@ -1,8 +1,10 @@
 package com.amarinag.amgmoviedb.network
 
 import com.amarinag.amgmoviedb.model.Popular
-import retrofit2.Call
+import io.reactivex.Single
+import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 /**
  *      AMGMovieDB.
@@ -12,5 +14,5 @@ import retrofit2.http.GET
  */
 interface MovieDbService {
     @GET("popular")
-    fun getPopularMovies(): Call<Popular>
+    fun getPopularMovies(@Query("page") page: Int = 1): Single<Response<Popular>>
 }
