@@ -1,7 +1,7 @@
 package com.amarinag.amgmoviedb.ui.main
 
 import android.arch.lifecycle.ViewModel
-import timber.log.Timber
+import com.amarinag.amgmoviedb.domain.interactor.GetPopularMoviesInteractor
 import javax.inject.Inject
 
 /**
@@ -10,8 +10,6 @@ import javax.inject.Inject
  *  @author -   AMarinaG
  *  @since  -   19/4/18
  */
-class MainViewModel @Inject constructor() : ViewModel() {
-    init {
-        Timber.d("Se ha iniciado MainViewModel")
-    }
+class MainViewModel @Inject constructor(private val getPopularMoviesInteractor: GetPopularMoviesInteractor) : ViewModel() {
+    fun getPopular(page: Int) = getPopularMoviesInteractor.invoke(page)
 }
