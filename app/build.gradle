@@ -14,7 +14,9 @@ android {
         versionName "0.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
+        buildConfigField "String", "IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\""
         buildConfigField "String", "MOVIEDB_API", "\"b66ffea8276ce576d60df52600822c88\""
+        vectorDrawables.useSupportLibrary = true
     }
     dataBinding {
         enabled = true
@@ -40,11 +42,14 @@ dependencies {
     implementation deps.okhttp3.logging_interceptor
     implementation deps.rxjava2
     implementation deps.rx_android
+    implementation deps.glide.runtime
+    implementation deps.glide.okhttp3_integration
 
     kapt deps.dagger.compiler
     kapt deps.dagger.android_support_compiler
     kapt deps.databinding_compiler
     kapt deps.lifecycle.compiler
+    kapt deps.glide.compiler
 
     //test dependencies
     testImplementation deps.junit

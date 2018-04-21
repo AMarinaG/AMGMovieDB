@@ -11,6 +11,7 @@ versions.leak_canary = "1.5.4"
 versions.dagger = "2.14.1"
 versions.retrofit = "2.4.0"
 versions.okhttp3 = "3.10.0"
+versions.glide_version = "4.7.1"
 
 versions.junit = "4.12"
 versions.support_runner = "1.0.1"
@@ -67,12 +68,22 @@ dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$v
 deps.dagger = dagger
 
 def kotlin = [:]
-kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
 kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 deps.kotlin = kotlin
 
 def leakcanary = [:]
+leakcanary.debug = "com.squareup.leakcanary:leakcanary-android:$versions.leak_canary"
+leakcanary.no_op = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leak_canary"
+deps.leakcanary = leakcanary
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide_version"
+glide.okhttp3_integration = "com.github.bumptech.glide:okhttp3-integration:$versions.glide_version@aar"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide_version"
+deps.glide = glide
+
 leakcanary.debug = "com.squareup.leakcanary:leakcanary-android:$versions.leak_canary"
 leakcanary.no_op = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leak_canary"
 deps.leakcanary = leakcanary
