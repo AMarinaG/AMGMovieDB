@@ -14,6 +14,7 @@ android {
         versionName "0.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
+        buildConfigField "String", "IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\""
         buildConfigField "String", "MOVIEDB_API", "\"b66ffea8276ce576d60df52600822c88\""
     }
     dataBinding {

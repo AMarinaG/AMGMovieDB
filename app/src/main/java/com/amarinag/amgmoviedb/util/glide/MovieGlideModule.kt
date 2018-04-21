@@ -2,6 +2,9 @@ package com.amarinag.amgmoviedb.util.glide
 
 import android.content.Context
 import android.util.Log
+import com.bumptech.glide.GlideBuilder
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.module.AppGlideModule
 
 /**
  *      AMGMovieDB.
@@ -12,7 +15,7 @@ import android.util.Log
 @GlideModule
 class MovieGlideModule : AppGlideModule() {
 
-    fun applyOptions(context: Context, builder: GlideBuilder) {
-        builder.setLogLevel(Log.WARN)
+    override fun applyOptions(context: Context, builder: GlideBuilder) {
+        builder.setLogLevel(Log.DEBUG)
     }
 }
