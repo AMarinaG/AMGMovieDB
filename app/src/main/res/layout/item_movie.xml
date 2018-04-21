@@ -31,15 +31,29 @@
         android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_tiny"
+        android:layout_marginEnd="@dimen/spacing_tiny"
+        android:layout_marginRight="@dimen/spacing_tiny"
         android:layout_marginStart="@dimen/spacing_tiny"
         android:layout_marginTop="@dimen/spacing_tiny"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="@{movie.title}"
         app:layout_constraintLeft_toRightOf="@+id/iv_poster"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/iv_favorite"
         tools:text="MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+        style="@style/TextAppearance.AppCompat.Title"
+        />
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_tiny"
+        android:layout_marginRight="@dimen/spacing_tiny"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_title"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_title"
+        app:srcCompat="@drawable/ic_favorite_border_pink_24dp"
         />
     <TextView
         android:id="@+id/tv_overview"
@@ -47,32 +61,38 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_tiny"
         android:ellipsize="end"
+        android:fontFamily="sans-serif-condensed"
         android:maxLines="3"
         android:text="@{movie.overview}"
         app:layout_constraintLeft_toLeftOf="@+id/tv_title"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/iv_favorite"
+        style="@style/TextAppearance.AppCompat.Body1"
         />
     <TextView
         android:id="@+id/tv_valoration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text='@{""+movie.voteAverage}'
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_overview"
         tools:text="6.7"
+        style="@style/TextAppearance.AppCompat.Headline"
         />
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
+        android:fontFamily="casual"
         android:text="@{movie.releaseDate}"
         app:layout_constraintBottom_toBottomOf="@+id/tv_valoration"
         app:layout_constraintLeft_toLeftOf="@+id/tv_title"
         app:layout_constraintRight_toLeftOf="@+id/tv_valoration"
         tools:text="Febrero, 4"
+        style="@style/TextAppearance.AppCompat.Caption"
         />
   </android.support.constraint.ConstraintLayout>
 </layout>
