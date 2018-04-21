@@ -12,6 +12,8 @@
   <android.support.constraint.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="125dp"
+      android:paddingEnd="@dimen/spacing_tiny"
+      android:paddingRight="@dimen/spacing_tiny"
       >
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/iv_poster"
@@ -29,9 +31,9 @@
         android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginLeft="@dimen/spacing_tiny"
+        android:layout_marginStart="@dimen/spacing_tiny"
+        android:layout_marginTop="@dimen/spacing_tiny"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="@{movie.title}"
@@ -43,7 +45,7 @@
         android:id="@+id/tv_overview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/spacing_tiny"
         android:ellipsize="end"
         android:maxLines="3"
         android:text="@{movie.overview}"
