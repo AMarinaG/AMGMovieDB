@@ -15,7 +15,7 @@ import com.amarinag.amgmoviedb.model.Movie
  *  @author -   AMarinaG
  *  @since  -   19/4/18
  */
-class MovieAdapter(private val clickListener: (Movie) -> Unit) : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
+class MovieAdapter(private val clickListener: (Movie) -> Unit, private val favoriteClickListener: (Movie) -> Unit) : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding: ItemMovieBinding =
                 DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_movie, parent, false)
@@ -23,14 +23,15 @@ class MovieAdapter(private val clickListener: (Movie) -> Unit) : ListAdapter<Mov
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(getItem(position), clickListener)
+        holder.bind(getItem(position), clickListener, favoriteClickListener)
 
     }
 
     inner class MovieViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: Movie, clickListener: (Movie) -> Unit) {
+        fun bind(movie: Movie, clickListener: (Movie) -> Unit, favoriteClickListener: (Movie) -> Unit) {
             binding.movie = movie
             binding.root.setOnClickListener { clickListener(movie) }
+            binding.ivFavorite.setOnClickListener { favoriteClickListener(movie) }
         }
     }
 
