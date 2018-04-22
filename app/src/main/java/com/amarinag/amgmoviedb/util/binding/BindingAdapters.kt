@@ -24,11 +24,13 @@ fun View.setVisible(show: Boolean) {
 }
 
 @BindingAdapter("imageUrl")
-fun ImageView.setImageUrl(url: String) {
-    GlideApp.with(this.context)
-            .load("${BuildConfig.IMAGE_URL}/$url")
-            .placeholder(R.mipmap.ic_launcher)
-            .error(R.mipmap.ic_launcher)
-            .fitCenter()
-            .into(this)
+fun ImageView.setImageUrl(url: String?) {
+    if (url != null) {
+        GlideApp.with(this.context)
+                .load("${BuildConfig.IMAGE_URL}/$url")
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
+                .fitCenter()
+                .into(this)
+    }
 }

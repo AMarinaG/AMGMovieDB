@@ -1,5 +1,6 @@
 package com.amarinag.amgmoviedb.ui.main
 
+import android.app.ActivityOptions
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -23,7 +24,7 @@ class MainActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
         val adapter = MovieAdapter(
-                { _ -> DetailActivity.start(this) },
+                { movie -> DetailActivity.start(this, movie.id, ActivityOptions.makeBasic()) },
                 { movie -> Timber.d("Hacemos favorito la pelicula: %s", movie) })
         binding.rvMovies.layoutManager = LinearLayoutManager(this)
         binding.rvMovies.adapter = adapter

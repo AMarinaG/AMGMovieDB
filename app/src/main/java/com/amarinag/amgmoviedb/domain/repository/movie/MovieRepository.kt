@@ -10,4 +10,6 @@ import javax.inject.Inject
  */
 class MovieRepository @Inject constructor(private val movieRemoteRepository: MovieRemoteRepository) {
     fun getPopularMovies(page: Int = 1) = movieRemoteRepository.getPopularMovies(page)
+
+    fun getMovie(movieId: Int) = movieRemoteRepository.getMovie(movieId)
 }
