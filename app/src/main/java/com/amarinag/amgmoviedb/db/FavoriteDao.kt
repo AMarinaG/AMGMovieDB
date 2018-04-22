@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Delete
 import android.arch.persistence.room.Insert
 import com.amarinag.amgmoviedb.model.Favorite
+import io.reactivex.Maybe
 
 /**
  *      AMGMovieDB.
@@ -14,8 +15,8 @@ import com.amarinag.amgmoviedb.model.Favorite
 @Dao
 interface FavoriteDao {
     @Insert
-    fun addFavorite(favorite: Favorite)
+    fun addFavorite(favorite: Favorite): Maybe<Int>
 
     @Delete
-    fun deleteFavorite(favorite: Favorite)
+    fun deleteFavorite(favorite: Favorite) : Maybe<Int>
 }

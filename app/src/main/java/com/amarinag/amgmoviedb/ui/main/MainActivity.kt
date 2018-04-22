@@ -25,7 +25,7 @@ class MainActivity : BaseActivity() {
         mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
         val adapter = MovieAdapter(
                 { movie -> DetailActivity.start(this, movie.id, ActivityOptions.makeBasic()) },
-                { movie -> Timber.d("Hacemos favorito la pelicula: %s", movie) })
+                { movie -> mainViewModel.addFavorite(movie.id) })
         binding.rvMovies.layoutManager = LinearLayoutManager(this)
         binding.rvMovies.adapter = adapter
         binding.rvMovies.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
