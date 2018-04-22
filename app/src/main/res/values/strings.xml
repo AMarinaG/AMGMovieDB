@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">AMGMovieDB</string>
+  <string name="label.general">General</string>
+  <string name="label.genre">Género</string>
 </resources>
