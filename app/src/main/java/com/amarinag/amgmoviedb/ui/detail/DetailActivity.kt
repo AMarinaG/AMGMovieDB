@@ -1,12 +1,12 @@
 package com.amarinag.amgmoviedb.ui.detail
 
-import android.app.ActivityOptions
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.app.ActivityOptionsCompat
 import com.amarinag.amgmoviedb.R
 import com.amarinag.amgmoviedb.databinding.ActivityDetailBinding
 import com.amarinag.amgmoviedb.ui.base.BaseActivity
@@ -47,10 +47,10 @@ class DetailActivity : BaseActivity() {
     companion object {
         const val EXTRA_MOVIE_ID = "extra_movie_id"
         @JvmStatic
-        fun start(context: Context, movieId: Int, activityOptions: ActivityOptions) {
+        fun start(context: Context, movieId: Long, activityOptionsCompat: ActivityOptionsCompat) {
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(EXTRA_MOVIE_ID, movieId)
-            context.startActivity(intent, activityOptions.toBundle())
+            context.startActivity(intent, activityOptionsCompat.toBundle())
         }
     }
 }

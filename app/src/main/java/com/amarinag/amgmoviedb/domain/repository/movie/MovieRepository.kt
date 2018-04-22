@@ -14,5 +14,7 @@ class MovieRepository @Inject constructor(private val movieRemoteRepository: Mov
 
     fun getMovie(movieId: Int) = movieRemoteRepository.getMovie(movieId)
 
-    fun addFavorite(movieId: Int) = movieLocalRepository.addFavorite(Favorite(movieId, true))
+    fun addFavorite(movieId: Long) = movieLocalRepository.addFavorite(Favorite(movieId, true))
+
+//    fun removeFavorite(movieId: Long) = movieLocalRepository.removeFavorite(movieId)
 }

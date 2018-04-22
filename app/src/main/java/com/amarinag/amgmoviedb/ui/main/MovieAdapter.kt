@@ -31,6 +31,8 @@ class MovieAdapter(private val clickListener: (Movie) -> Unit, private val favor
         fun bind(movie: Movie, clickListener: (Movie) -> Unit, favoriteClickListener: (Movie) -> Unit) {
             binding.movie = movie
             binding.root.setOnClickListener { clickListener(movie) }
+            val icFavorite = if (movie.favorite) R.drawable.ic_favorite_pink_24dp else R.drawable.ic_favorite_border_pink_24dp
+            binding.ivFavorite.setBackgroundResource(icFavorite)
             binding.ivFavorite.setOnClickListener { favoriteClickListener(movie) }
         }
     }
