@@ -27,7 +27,7 @@ class MovieAdapter(private val clickListener: (Movie) -> Unit, private val favor
 
     }
 
-    inner class MovieViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie, clickListener: (Movie) -> Unit, favoriteClickListener: (Movie) -> Unit) {
             binding.movie = movie
             binding.root.setOnClickListener { clickListener(movie) }
