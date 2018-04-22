@@ -64,6 +64,6 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideDbManager(app: App) = Room.databaseBuilder(app, AppDatabase::class.java, app.packageName.toLowerCase() + "_db").allowMainThreadQueries().build()
+    fun provideDbManager(app: App) = Room.databaseBuilder(app, AppDatabase::class.java, app.packageName.toLowerCase() + "_db").build()
 
 }
