@@ -2,6 +2,7 @@ package com.amarinag.amgmoviedb.di
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.amarinag.amgmoviedb.ui.detail.DetailViewModel
 import com.amarinag.amgmoviedb.ui.main.MainViewModel
 import dagger.Binds
 import dagger.Module
@@ -22,4 +23,8 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailViewModel::class)
+    abstract fun bindDetailViewModel(detailViewModel: DetailViewModel): ViewModel
 }
