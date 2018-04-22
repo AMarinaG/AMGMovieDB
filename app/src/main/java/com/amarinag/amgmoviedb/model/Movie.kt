@@ -83,4 +83,8 @@ data class Movie(
         @SerializedName("vote_count")
         @Expose
         val voteCount: Int = 0
-)
+) {
+    fun getGenreString(): String? {
+        return genres?.joinToString()
+    }
+}
