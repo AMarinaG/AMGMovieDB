@@ -3,6 +3,7 @@ package com.amarinag.amgmoviedb.ui.main
 import android.arch.lifecycle.ViewModel
 import com.amarinag.amgmoviedb.domain.interactor.AddFavoriteInteractor
 import com.amarinag.amgmoviedb.domain.interactor.GetPopularMoviesInteractor
+import com.amarinag.amgmoviedb.domain.interactor.RemoveFavoriteInteractor
 import javax.inject.Inject
 
 /**
@@ -13,8 +14,10 @@ import javax.inject.Inject
  */
 class MainViewModel @Inject constructor(
         private val getPopularMoviesInteractor: GetPopularMoviesInteractor,
-        private val addFavoriteInteractor: AddFavoriteInteractor) : ViewModel() {
+        private val addFavoriteInteractor: AddFavoriteInteractor,
+        private val removeFavoriteInteractor: RemoveFavoriteInteractor) : ViewModel() {
     fun getPopular(page: Int) = getPopularMoviesInteractor.invoke(page)
 
-    fun addFavorite(movieId: Int) = addFavoriteInteractor.invoke(movieId)
+    fun addFavorite(movieId: Long) = addFavoriteInteractor.invoke(movieId)
+//    fun removeFavorite(movieId: Long) = removeFavoriteInteractor.invoke(movieId)
 }

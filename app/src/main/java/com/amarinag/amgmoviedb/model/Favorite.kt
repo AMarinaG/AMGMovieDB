@@ -13,7 +13,7 @@ import android.arch.persistence.room.PrimaryKey
 @Entity(tableName = "favorite")
 data class Favorite(
         @ColumnInfo(name = "movieId")
-        @PrimaryKey()
-        var movieId: Int = 0,
+        @PrimaryKey(autoGenerate = false)
+        var movieId: Long = 0,
         val isFavorite: Boolean
 )

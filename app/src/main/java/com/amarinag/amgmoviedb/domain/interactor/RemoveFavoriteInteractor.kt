@@ -1,7 +1,6 @@
 package com.amarinag.amgmoviedb.domain.interactor
 
 import com.amarinag.amgmoviedb.domain.repository.movie.MovieRepository
-import io.reactivex.Completable
 import javax.inject.Inject
 
 /**
@@ -10,6 +9,6 @@ import javax.inject.Inject
  *  @author -   AMarinaG
  *  @since  -   22/4/18
  */
-class AddFavoriteInteractor @Inject constructor(private val movieRepository: MovieRepository) {
-    fun invoke(movieId: Long) = Completable.fromAction { movieRepository.addFavorite(movieId) }
+class RemoveFavoriteInteractor @Inject constructor(private val movieRepository: MovieRepository) {
+//    fun invoke(movieId: Long) = movieRepository.removeFavorite(movieId)
 }
