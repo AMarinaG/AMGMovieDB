@@ -19,5 +19,5 @@ class MainViewModel @Inject constructor(
     fun getPopular(page: Int) = getPopularMoviesInteractor.invoke(page)
 
     fun addFavorite(movieId: Long) = addFavoriteInteractor.invoke(movieId)
-//    fun removeFavorite(movieId: Long) = removeFavoriteInteractor.invoke(movieId)
+    fun removeFavorite(movieId: Long) = removeFavoriteInteractor.invoke(movieId)
 }

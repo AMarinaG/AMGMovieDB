@@ -28,13 +28,17 @@ class MainActivity : BaseActivity() {
                 { movie -> DetailActivity.start(this, movie.id, ActivityOptionsCompat.makeBasic()) },
                 { movie ->
                     if (movie.favorite) {
-//                        mainViewModel.removeFavorite(movie.id).subscribe(
-//                                {
-//                                    movie.favorite = false
-//                                },
-//                                {
-//                                    Timber.e(it, "Error al salvar favorito: ${it.message}")
-//                                })
+                        mainViewModel.removeFavorite(movie.id)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(
+                                        {
+                                            movie.favorite = false
+                                            adapter.notifyDataSetChanged()
+                                        },
+                                        {
+                                            Timber.e(it, "Error al salvar favorito: ${it.message}")
+                                        })
                     } else {
                         mainViewModel.addFavorite(movie.id)
                                 .subscribeOn(Schedulers.io())

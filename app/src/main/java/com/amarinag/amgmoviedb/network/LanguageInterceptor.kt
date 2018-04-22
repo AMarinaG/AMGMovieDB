@@ -18,6 +18,7 @@ class LanguageInterceptor @Inject constructor(private val app: App) : Intercepto
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.request()
         val originalUrl = original.url()
+        @Suppress("DEPRECATION")
         val currentLocale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             app.resources.configuration.locales[0]
         } else {

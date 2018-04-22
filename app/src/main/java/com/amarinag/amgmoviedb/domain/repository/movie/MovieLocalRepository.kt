@@ -16,5 +16,5 @@ class MovieLocalRepository @Inject constructor(appDatabase: AppDatabase) {
     fun getFavorite(movieId: Long) = favoriteDao.getFavoriteById(movieId)
 
     fun addFavorite(favorite: Favorite) = favoriteDao.addFavorite(favorite)
-//    fun removeFavorite(movieId: Long) = favoriteDao.deleteFavorite(movieId)
+    fun removeFavorite(movieId: Long) = favoriteDao.deleteFavorite(Favorite(movieId, false))
 }

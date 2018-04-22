@@ -1,6 +1,7 @@
 package com.amarinag.amgmoviedb.db
 
 import android.arch.persistence.room.Dao
+import android.arch.persistence.room.Delete
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
 import com.amarinag.amgmoviedb.model.Favorite
@@ -19,6 +20,6 @@ interface FavoriteDao {
     @Insert
     fun addFavorite(favorite: Favorite): Long
 
-//    @Delete
-//    fun deleteFavorite(movieId: Long)
+    @Delete
+    fun deleteFavorite(favorite: Favorite)
 }
