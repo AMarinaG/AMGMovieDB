@@ -39,6 +39,7 @@
             android:layout_height="300dp"
             android:fitsSystemWindows="true"
             android:scaleType="centerCrop"
+            android:transitionName="poster"
             app:imageUrl="@{movie.posterPath}"
             app:layout_collapseMode="parallax"
             app:srcCompat="@mipmap/ic_launcher"
@@ -51,6 +52,7 @@
             app:layout_collapseMode="pin"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="@{movie.title}"
+            android:transitionName="title"
             />
 
       </android.support.design.widget.CollapsingToolbarLayout>
