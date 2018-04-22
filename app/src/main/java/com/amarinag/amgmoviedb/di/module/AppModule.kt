@@ -1,6 +1,9 @@
 package com.amarinag.amgmoviedb.di.module
 
+import android.arch.persistence.room.Room
+import com.amarinag.amgmoviedb.App
 import com.amarinag.amgmoviedb.BuildConfig
+import com.amarinag.amgmoviedb.db.AppDatabase
 import com.amarinag.amgmoviedb.di.ViewModelModule
 import com.amarinag.amgmoviedb.network.ApiKeyInterceptor
 import com.amarinag.amgmoviedb.network.LanguageInterceptor
@@ -58,4 +61,9 @@ class AppModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
             .create(MovieDbService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDbManager(app: App) = Room.databaseBuilder(app, AppDatabase::class.java, app.packageName.toLowerCase() + "_db").allowMainThreadQueries().build()
+
 }
