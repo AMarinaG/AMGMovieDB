@@ -2,6 +2,7 @@ package com.amarinag.amgmoviedb.db
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
+import android.arch.persistence.room.Query
 import com.amarinag.amgmoviedb.model.Favorite
 
 /**
@@ -12,6 +13,9 @@ import com.amarinag.amgmoviedb.model.Favorite
  */
 @Dao
 interface FavoriteDao {
+    @Query("SELECT * FROM favorite WHERE movieId = :movieId")
+    fun getFavoriteById(movieId: Long): Favorite?
+
     @Insert
     fun addFavorite(favorite: Favorite): Long
 
