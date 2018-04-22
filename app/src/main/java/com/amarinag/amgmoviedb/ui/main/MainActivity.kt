@@ -3,11 +3,11 @@ package com.amarinag.amgmoviedb.ui.main
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.amarinag.amgmoviedb.R
 import com.amarinag.amgmoviedb.databinding.ActivityMainBinding
 import com.amarinag.amgmoviedb.ui.base.BaseActivity
-import com.amarinag.amgmoviedb.util.LinearMarginItemDecoration
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
                 { movie -> Timber.d("Hacemos favorito la pelicula: %s", movie) })
         binding.rvMovies.layoutManager = LinearLayoutManager(this)
         binding.rvMovies.adapter = adapter
-        binding.rvMovies.addItemDecoration(LinearMarginItemDecoration(20, LinearLayoutManager.VERTICAL))
+        binding.rvMovies.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
         mainViewModel.getPopular(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
