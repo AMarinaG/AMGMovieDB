@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.amarinag.amgmoviedb.R
 import com.amarinag.amgmoviedb.databinding.ActivityMainBinding
 import com.amarinag.amgmoviedb.ui.base.BaseActivity
+import com.amarinag.amgmoviedb.ui.detail.DetailActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
@@ -22,7 +23,7 @@ class MainActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
         val adapter = MovieAdapter(
-                { movie -> Timber.d("Has pulsado la peli: %s", movie) },
+                { _ -> DetailActivity.start(this) },
                 { movie -> Timber.d("Hacemos favorito la pelicula: %s", movie) })
         binding.rvMovies.layoutManager = LinearLayoutManager(this)
         binding.rvMovies.adapter = adapter
