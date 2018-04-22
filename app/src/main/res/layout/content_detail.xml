@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+  <data>
+    <variable
+        name="movie"
+        type="com.amarinag.amgmoviedb.model.Movie"
+        />
+  </data>
+  <android.support.v4.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:padding="@dimen/spacing_normal"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      tools:context=".ui.detail.DetailActivity"
+      tools:showIn="@layout/activity_detail"
+      >
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+      <TextView
+          android:id="@+id/tv_label_general"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/label.general"
+          app:layout_constraintTop_toTopOf="parent"
+          style="@style/TextAppearance.AppCompat.Subhead"
+          />
+      <TextView
+          android:id="@+id/tv_overview"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/spacing_small"
+          android:fontFamily="sans-serif-condensed"
+          android:text="@{movie.overview}"
+          android:transitionName="overview"
+          app:layout_constraintTop_toBottomOf="@id/tv_label_general"
+          tools:text="Detalle de la película"
+          style="@style/TextAppearance.AppCompat.Body1"
+          />
+      <TextView
+          android:id="@+id/tv_label_genre"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/spacing_normal"
+          android:text="@string/label.genre"
+          app:layout_constraintTop_toBottomOf="@id/tv_overview"
+          style="@style/TextAppearance.AppCompat.Subhead"
+          />
+      <TextView
+          android:id="@+id/tv_genre"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/spacing_small"
+          android:fontFamily="sans-serif-condensed"
+          android:text="@{movie.getGenreString}"
+          app:layout_constraintTop_toBottomOf="@id/tv_label_genre"
+          tools:text="Drama, Comedia, Acción"
+          style="@style/TextAppearance.AppCompat.Body1"
+          />
+
+    </android.support.constraint.ConstraintLayout>
+  </android.support.v4.widget.NestedScrollView>
+</layout>

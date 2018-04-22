@@ -1,5 +1,6 @@
 package com.amarinag.amgmoviedb.di.module
 
+import com.amarinag.amgmoviedb.ui.detail.DetailActivity
 import com.amarinag.amgmoviedb.ui.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -14,4 +15,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
     @ContributesAndroidInjector
     abstract fun contributeMainActivity(): MainActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeDetailActivity(): DetailActivity
 }

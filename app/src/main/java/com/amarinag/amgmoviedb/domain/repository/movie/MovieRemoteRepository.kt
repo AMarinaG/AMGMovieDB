@@ -9,6 +9,7 @@ import javax.inject.Inject
  *  @author -   AMarinaG
  *  @since  -   20/4/18
  */
-class MovieRemoteRepository @Inject constructor(private val movieDbService: MovieDbService){
+class MovieRemoteRepository @Inject constructor(private val movieDbService: MovieDbService) {
     fun getPopularMovies(page: Int) = movieDbService.getPopularMovies(page)
+    fun getMovie(movieId: Int) = movieDbService.getMovie(movieId)
 }
