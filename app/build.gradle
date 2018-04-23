@@ -41,7 +41,7 @@ dependencies {
     implementation deps.okhttp3.okhttp
     implementation deps.okhttp3.logging_interceptor
     implementation deps.okhttp3.okhttp3_idling_resource
-    implementation deps.support.espresso_idling_resource
+    implementation deps.support_test.espresso_idling_resource
     implementation deps.rxjava2
     implementation deps.rx_android
     implementation deps.glide.runtime
@@ -59,9 +59,10 @@ dependencies {
     //test dependencies
     testImplementation deps.junit
     testImplementation deps.room.testing
-    androidTestImplementation deps.support.test_runner
-    androidTestImplementation deps.support.espresso_core
-    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1', {
+    androidTestImplementation deps.support_test.test_runner
+    androidTestImplementation deps.support_test.espresso_core
+    androidTestImplementation deps.support_test.espresso_intents
+    androidTestImplementation deps.support_test.espresso_contrib, {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'com.android.support', module: 'design'

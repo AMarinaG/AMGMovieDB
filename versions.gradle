@@ -29,11 +29,18 @@ def support = [:]
 support.app_compat = "com.android.support:appcompat-v7:$versions.support"
 support.constraint = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
 support.design = "com.android.support:design:$versions.support"
-support.test_runner = "com.android.support.test:runner:$versions.support_runner"
-support.espresso_core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
-support.espresso_idling_resource = "com.android.support.test.espresso:espresso-idling-resource:$versions.espresso"
 
 deps.support = support
+
+def support_test = [:]
+support_test.test_runner = "com.android.support.test:runner:$versions.support_runner"
+support_test.espresso_core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
+support_test.espresso_idling_resource = "com.android.support.test.espresso:espresso-idling-resource:$versions.espresso"
+support_test.espresso_intents = "com.android.support.test.espresso:espresso-intents:$versions.espresso"
+support_test.espresso_contrib = "com.android.support.test.espresso:espresso-contrib:$versions.espresso"
+deps.support_test = support_test
+
+
 
 def lifecycle = [:]
 lifecycle.runtime = "android.arch.lifecycle:runtime:$versions.lifecycle"
