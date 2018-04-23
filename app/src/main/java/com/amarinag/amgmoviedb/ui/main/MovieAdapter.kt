@@ -18,6 +18,7 @@ import com.amarinag.amgmoviedb.model.Movie
  *  @since  -   19/4/18
  */
 class MovieAdapter(private val clickListener: (Movie, List<View>) -> Unit, private val favoriteClickListener: (Movie) -> Unit) : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
+    private var movies: ArrayList<Movie>? = arrayListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding: ItemMovieBinding =
                 DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_movie, parent, false)
@@ -37,6 +38,23 @@ class MovieAdapter(private val clickListener: (Movie, List<View>) -> Unit, priva
             binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(itemView.context, icFavorite))
             binding.ivFavorite.setOnClickListener { favoriteClickListener(movie) }
         }
+    }
+
+    override fun submitList(list: List<Movie>?) {
+        super.submitList(list)
+        if (list != null) {
+            movies?.clear()
+            movies?.addAll(list)
+        }
+
+
+    }
+
+    fun addMovies(list: List<Movie>?) {
+        if (list != null) {
+            movies?.addAll(list)
+        }
+        super.submitList(movies)
     }
 }
 
