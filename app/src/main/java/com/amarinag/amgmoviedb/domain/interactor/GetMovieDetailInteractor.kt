@@ -10,5 +10,10 @@ import javax.inject.Inject
  *  @since  -   22/4/18
  */
 class GetMovieDetailInteractor @Inject constructor(private val movieRepository: MovieRepository) {
-    fun invoke(movieId: Int) = movieRepository.getMovie(movieId)
+    fun invoke(movieId: Long) = movieRepository.getMovie(movieId)
+            .map {
+                it.body()?.favorite = movieRepository.getFavorite(it.body()?.id!!)?.isFavorite ?: false
+                it
+            }
+            .toFlowable()
 }

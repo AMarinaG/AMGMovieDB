@@ -56,6 +56,10 @@ class MainActivity : BaseActivity() {
         binding.rvMovies.layoutManager = LinearLayoutManager(this)
         binding.rvMovies.adapter = adapter
         binding.rvMovies.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+    }
+
+    override fun onResume() {
+        super.onResume()
         mainViewModel.getPopular(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -72,5 +76,6 @@ class MainActivity : BaseActivity() {
                         }
 
                 )
+
     }
 }

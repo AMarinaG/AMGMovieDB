@@ -19,5 +19,5 @@ interface MovieDbService {
     fun getPopularMovies(@Query("page") page: Int = 1): Single<Response<Popular>>
 
     @GET("{movie_id}")
-    fun getMovie(@Path("movie_id") movieId: Int): Single<Response<Movie>>
+    fun getMovie(@Path("movie_id") movieId: Long): Single<Response<Movie>>
 }
