@@ -4,6 +4,8 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.util.Pair
+import android.support.v4.view.ViewCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.amarinag.amgmoviedb.R
@@ -25,7 +27,13 @@ class MainActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
         adapter = MovieAdapter(
-                { movie -> DetailActivity.start(this, movie.id, ActivityOptionsCompat.makeBasic()) },
+                { movie, list ->
+                    val pair = Pair(list[0], ViewCompat.getTransitionName(list[0]))
+                    val pair2 = Pair(list[1], ViewCompat.getTransitionName(list[1]))
+                    val pair3 = Pair(list[2], ViewCompat.getTransitionName(list[2]))
+                    DetailActivity.start(this@MainActivity, movie.id, ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity, pair, pair2, pair3))
+
+                },
                 { movie ->
                     if (movie.favorite) {
                         mainViewModel.removeFavorite(movie.id)
