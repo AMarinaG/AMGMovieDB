@@ -86,6 +86,13 @@ data class Movie(
         var favorite: Boolean = false
 ) {
     fun getGenreString(): String? {
-        return genres?.joinToString()
+        if (genres?.iterator() == null)
+            return null
+        var stringGenres = ""
+        for (genre in genres.iterator()) {
+            stringGenres += genre.name + ", "
+        }
+        stringGenres.dropLast(2)
+        return stringGenres
     }
 }

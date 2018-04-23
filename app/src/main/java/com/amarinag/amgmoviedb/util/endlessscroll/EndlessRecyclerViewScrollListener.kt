@@ -1,5 +1,6 @@
 package com.amarinag.amgmoviedb.util.endlessscroll
 
+import android.support.annotation.Keep
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView

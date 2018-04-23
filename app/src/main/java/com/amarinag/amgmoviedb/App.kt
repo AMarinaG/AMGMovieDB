@@ -25,8 +25,10 @@ class App : Application(), HasActivityInjector {
         super.onCreate()
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         AppInjector.init(this)
-        Stetho.initializeWithDefaults(this)
-        Timber.plant(Timber.DebugTree())
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this)
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = activityInjector
