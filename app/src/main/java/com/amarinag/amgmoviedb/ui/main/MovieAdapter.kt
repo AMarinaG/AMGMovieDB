@@ -5,6 +5,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.amarinag.amgmoviedb.R
 import com.amarinag.amgmoviedb.databinding.ItemMovieBinding
@@ -16,7 +17,7 @@ import com.amarinag.amgmoviedb.model.Movie
  *  @author -   AMarinaG
  *  @since  -   19/4/18
  */
-class MovieAdapter(private val clickListener: (Movie) -> Unit, private val favoriteClickListener: (Movie) -> Unit) : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
+class MovieAdapter(private val clickListener: (Movie, List<View>) -> Unit, private val favoriteClickListener: (Movie) -> Unit) : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding: ItemMovieBinding =
                 DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_movie, parent, false)
@@ -29,13 +30,13 @@ class MovieAdapter(private val clickListener: (Movie) -> Unit, private val favor
     }
 
     inner class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: Movie, clickListener: (Movie) -> Unit, favoriteClickListener: (Movie) -> Unit) {
+        fun bind(movie: Movie, clickListener: (Movie, List<View>) -> Unit, favoriteClickListener: (Movie) -> Unit) {
             binding.movie = movie
-            binding.root.setOnClickListener { clickListener(movie) }
+            binding.root.setOnClickListener { clickListener(movie, arrayListOf(binding.ivPoster, binding.tvTitle, binding.tvOverview)) }
             val icFavorite = if (movie.favorite) R.drawable.ic_favorite_pink_24dp else R.drawable.ic_favorite_border_pink_24dp
             binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(itemView.context, icFavorite))
             binding.ivFavorite.setOnClickListener { favoriteClickListener(movie) }
         }
     }
-
 }
+

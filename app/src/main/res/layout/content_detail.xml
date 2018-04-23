@@ -12,6 +12,7 @@
   <android.support.v4.widget.NestedScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:clipToPadding="false"
       android:padding="@dimen/spacing_normal"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
       tools:context=".ui.detail.DetailActivity"
@@ -31,12 +32,14 @@
           />
       <TextView
           android:id="@+id/tv_overview"
-          android:layout_width="wrap_content"
+          android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_marginTop="@dimen/spacing_small"
           android:fontFamily="sans-serif-condensed"
           android:text="@{movie.overview}"
           android:transitionName="overview"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintRight_toRightOf="parent"
           app:layout_constraintTop_toBottomOf="@id/tv_label_general"
           tools:text="Detalle de la película"
           style="@style/TextAppearance.AppCompat.Body1"
