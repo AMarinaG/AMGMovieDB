@@ -1,6 +1,8 @@
 package com.amarinag.amgmoviedb.ui.base
 
 import android.arch.lifecycle.ViewModelProvider
+import android.support.annotation.VisibleForTesting
+import android.support.test.espresso.IdlingResource
 import android.support.v7.app.AppCompatActivity
 import javax.inject.Inject
 
@@ -12,5 +14,14 @@ import javax.inject.Inject
  */
 abstract class BaseActivity : AppCompatActivity() {
     @Inject
+    lateinit var mIdlingResource: IdlingResource
+
+    @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+
+    @VisibleForTesting
+    fun getIdlingResource(): IdlingResource {
+        return mIdlingResource
+    }
 }

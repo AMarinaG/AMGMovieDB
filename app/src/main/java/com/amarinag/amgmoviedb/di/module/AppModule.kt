@@ -1,6 +1,7 @@
 package com.amarinag.amgmoviedb.di.module
 
 import android.arch.persistence.room.Room
+import android.support.test.espresso.IdlingResource
 import com.amarinag.amgmoviedb.App
 import com.amarinag.amgmoviedb.BuildConfig
 import com.amarinag.amgmoviedb.db.AppDatabase
@@ -11,6 +12,7 @@ import com.amarinag.amgmoviedb.network.MovieDbService
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.jakewharton.espresso.OkHttp3IdlingResource
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -66,4 +68,9 @@ class AppModule {
     @Singleton
     fun provideDbManager(app: App) = Room.databaseBuilder(app, AppDatabase::class.java, app.packageName.toLowerCase() + "_db").build()
 
+    @Provides
+    @Singleton
+    fun provideIdlingResource(client: OkHttpClient): IdlingResource {
+        return OkHttp3IdlingResource.create("OkHttp", client)
+    }
 }
