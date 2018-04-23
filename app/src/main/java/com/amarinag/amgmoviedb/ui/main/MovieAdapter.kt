@@ -1,6 +1,7 @@
 package com.amarinag.amgmoviedb.ui.main
 
 import android.databinding.DataBindingUtil
+import android.support.v4.content.ContextCompat
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -32,7 +33,7 @@ class MovieAdapter(private val clickListener: (Movie) -> Unit, private val favor
             binding.movie = movie
             binding.root.setOnClickListener { clickListener(movie) }
             val icFavorite = if (movie.favorite) R.drawable.ic_favorite_pink_24dp else R.drawable.ic_favorite_border_pink_24dp
-            binding.ivFavorite.setBackgroundResource(icFavorite)
+            binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(itemView.context, icFavorite))
             binding.ivFavorite.setOnClickListener { favoriteClickListener(movie) }
         }
     }
