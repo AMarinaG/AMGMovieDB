@@ -61,7 +61,6 @@ dependencies {
     testImplementation deps.room.testing
     androidTestImplementation deps.support_test.test_runner
     androidTestImplementation deps.support_test.espresso_core
-    androidTestImplementation deps.support_test.espresso_intents
     androidTestImplementation deps.support_test.espresso_contrib, {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-v4'
