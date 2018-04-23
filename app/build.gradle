@@ -15,7 +15,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
         buildConfigField "String", "IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\""
-        buildConfigField "String", "MOVIEDB_API", "\"b66ffea8276ce576d60df52600822c88\""
+        buildConfigField "String", "MOVIEDB_API", "\"$API_KEY\""
         vectorDrawables.useSupportLibrary = true
     }
     dataBinding {
@@ -40,6 +40,8 @@ dependencies {
     implementation deps.stetho.okhttp3
     implementation deps.okhttp3.okhttp
     implementation deps.okhttp3.logging_interceptor
+    implementation deps.okhttp3.okhttp3_idling_resource
+    implementation deps.support.espresso_idling_resource
     implementation deps.rxjava2
     implementation deps.rx_android
     implementation deps.glide.runtime
@@ -59,6 +61,12 @@ dependencies {
     testImplementation deps.room.testing
     androidTestImplementation deps.support.test_runner
     androidTestImplementation deps.support.espresso_core
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
 }
 
 android.applicationVariants.all { variant ->
