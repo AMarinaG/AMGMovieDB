@@ -44,6 +44,9 @@ dependencies {
     implementation deps.rx_android
     implementation deps.glide.runtime
     implementation deps.glide.okhttp3_integration
+    implementation deps.room.runtime
+    implementation deps.room.rxjava2
+    kapt deps.room.compiler
 
     kapt deps.dagger.compiler
     kapt deps.dagger.android_support_compiler
@@ -53,6 +56,7 @@ dependencies {
 
     //test dependencies
     testImplementation deps.junit
+    testImplementation deps.room.testing
     androidTestImplementation deps.support.test_runner
     androidTestImplementation deps.support.espresso_core
 }

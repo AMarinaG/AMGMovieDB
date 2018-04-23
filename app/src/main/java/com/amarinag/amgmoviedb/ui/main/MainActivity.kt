@@ -1,9 +1,9 @@
 package com.amarinag.amgmoviedb.ui.main
 
-import android.app.ActivityOptions
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.amarinag.amgmoviedb.R
@@ -18,17 +18,48 @@ class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainViewModel: MainViewModel
     private var page: Int = 1
+    private lateinit var adapter: MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
-        val adapter = MovieAdapter(
-                { movie -> DetailActivity.start(this, movie.id, ActivityOptions.makeBasic()) },
-                { movie -> Timber.d("Hacemos favorito la pelicula: %s", movie) })
+        adapter = MovieAdapter(
+                { movie -> DetailActivity.start(this, movie.id, ActivityOptionsCompat.makeBasic()) },
+                { movie ->
+                    if (movie.favorite) {
+                        mainViewModel.removeFavorite(movie.id)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(
+                                        {
+                                            movie.favorite = false
+                                            adapter.notifyDataSetChanged()
+                                        },
+                                        {
+                                            Timber.e(it, "Error al salvar favorito: ${it.message}")
+                                        })
+                    } else {
+                        mainViewModel.addFavorite(movie.id)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(
+                                        {
+                                            movie.favorite = true
+                                            adapter.notifyDataSetChanged()
+                                        },
+                                        {
+                                            Timber.e(it, "Error al salvar favorito: ${it.message}")
+                                        })
+                    }
+                })
         binding.rvMovies.layoutManager = LinearLayoutManager(this)
         binding.rvMovies.adapter = adapter
         binding.rvMovies.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+    }
+
+    override fun onResume() {
+        super.onResume()
         mainViewModel.getPopular(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -45,5 +76,6 @@ class MainActivity : BaseActivity() {
                         }
 
                 )
+
     }
 }

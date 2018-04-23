@@ -31,7 +31,7 @@ data class Movie(
         val homepage: String? = null,
         @SerializedName("id")
         @Expose
-        val id: Int = 0,
+        val id: Long = 0,
         @SerializedName("imdb_id")
         @Expose
         val imdbId: String? = null,
@@ -82,7 +82,8 @@ data class Movie(
         val voteAverage: Float = 0.toFloat(),
         @SerializedName("vote_count")
         @Expose
-        val voteCount: Int = 0
+        val voteCount: Int = 0,
+        var favorite: Boolean = false
 ) {
     fun getGenreString(): String? {
         return genres?.joinToString()

@@ -11,5 +11,5 @@ import javax.inject.Inject
  */
 class MovieRemoteRepository @Inject constructor(private val movieDbService: MovieDbService) {
     fun getPopularMovies(page: Int) = movieDbService.getPopularMovies(page)
-    fun getMovie(movieId: Int) = movieDbService.getMovie(movieId)
+    fun getMovie(movieId: Long) = movieDbService.getMovie(movieId)
 }
