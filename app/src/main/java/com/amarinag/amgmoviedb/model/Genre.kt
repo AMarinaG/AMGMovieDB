@@ -17,6 +17,4 @@ data class Genre(
         @SerializedName("name")
         @Expose
         val name: String = ""
-) {
-    override fun toString() = name
-}
+)

@@ -67,8 +67,6 @@ class MainActivity : BaseActivity() {
         val layoutManager = LinearLayoutManager(this)
         endlessRecyclerViewScrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
-                Timber.e("Cargamos mas elementos!")
-                Timber.e("page: $page, totalItemsCount: $totalItemsCount, recyclerView: $view")
                 mainViewModel.getPopular(page)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
