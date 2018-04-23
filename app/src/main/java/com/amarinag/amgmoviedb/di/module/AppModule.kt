@@ -47,7 +47,7 @@ class AppModule {
         builder.addInterceptor(languageInterceptor)
         builder.addNetworkInterceptor(StethoInterceptor())
         val loginInterceptor = HttpLoggingInterceptor()
-        loginInterceptor.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+        loginInterceptor.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BASIC else HttpLoggingInterceptor.Level.NONE
         builder.addInterceptor(loginInterceptor)
         return builder.build()
     }
