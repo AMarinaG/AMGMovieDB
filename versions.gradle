@@ -4,7 +4,6 @@ def versions = [:]
 versions.support = "27.1.0"
 versions.constraint_layout = "1.0.2"
 versions.lifecycle = "1.1.0"
-versions.databinding_compiler = "3.1.1"
 versions.timber = "4.6.1"
 versions.stetho = "1.5.0"
 versions.leak_canary = "1.5.4"
@@ -15,10 +14,10 @@ versions.okhttp3_idling_resource = "1.0.0"
 versions.glide_version = "4.7.1"
 
 versions.junit = "4.12"
-versions.support_runner = "1.0.1"
+versions.support_runner = "1.0.2"
 versions.espresso = "3.0.1"
 versions.kotlin = "1.2.40"
-versions.android_gradle_plugin = "3.1.1"
+versions.android_gradle_plugin = "3.1.2"
 versions.android_git_version = "0.4.3"
 versions.room = "1.0.0"
 versions.rxjava2 = "2.1.12"
@@ -34,6 +33,7 @@ deps.support = support
 
 def support_test = [:]
 support_test.test_runner = "com.android.support.test:runner:$versions.support_runner"
+support_test.test_rules = "com.android.support.test:rules:$versions.support_runner"
 support_test.espresso_core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
 support_test.espresso_idling_resource = "com.android.support.test.espresso:espresso-idling-resource:$versions.espresso"
 support_test.espresso_intents = "com.android.support.test.espresso:espresso-intents:$versions.espresso"
@@ -47,6 +47,7 @@ lifecycle.runtime = "android.arch.lifecycle:runtime:$versions.lifecycle"
 lifecycle.extensions = "android.arch.lifecycle:extensions:$versions.lifecycle"
 lifecycle.java8 = "android.arch.lifecycle:common-java8:$versions.lifecycle"
 lifecycle.compiler = "android.arch.lifecycle:compiler:$versions.lifecycle"
+lifecycle.testing = "android.arch.core:core-testing:$versions.lifecycle"
 deps.lifecycle = lifecycle
 
 def room = [:]
@@ -101,7 +102,7 @@ stetho.okhttp3 = "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
 deps.stetho = stetho
 
 deps.timber = "com.jakewharton.timber:timber:$versions.timber"
-deps.databinding_compiler = "com.android.databinding:compiler:$versions.databinding_compiler"
+deps.databinding_compiler = "com.android.databinding:compiler:$versions.android_gradle_plugin"
 deps.junit = "junit:junit:$versions.junit"
 
 deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
