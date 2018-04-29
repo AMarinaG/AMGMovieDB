@@ -8,14 +8,13 @@ import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import android.test.suitebuilder.annotation.LargeTest
 import android.view.View
 import android.view.ViewGroup
 import com.amarinag.amgmoviedb.R
 import junit.framework.Assert.assertTrue
 import org.hamcrest.Description
 import org.hamcrest.Matcher
-import org.hamcrest.Matchers.allOf
+import org.hamcrest.Matchers.*
 import org.hamcrest.TypeSafeMatcher
 import org.hamcrest.core.IsInstanceOf
 import org.junit.After
@@ -31,7 +30,6 @@ import org.junit.runner.RunWith
  * @author -   AMarinaG
  * @since -   23/4/18
  */
-@LargeTest
 @RunWith(AndroidJUnit4::class)
 class DetailActivityTest {
     @Rule
@@ -70,7 +68,7 @@ class DetailActivityTest {
                 allOf<View>(
                         withId(R.id.tv_overview),
                         withText(
-                                "Determined to prove herself, Officer Judy Hopps, the first bunny on Zootopia's police force, jumps at the chance to crack her first case - even if it means partnering with scam-artist fox Nick Wilde to solve the mystery."),
+                                not(isEmptyString())),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.instanceOf<View>(
@@ -81,7 +79,7 @@ class DetailActivityTest {
         textView.check(
                 matches(
                         withText(
-                                "Determined to prove herself, Officer Judy Hopps, the first bunny on Zootopia's police force, jumps at the chance to crack her first case - even if it means partnering with scam-artist fox Nick Wilde to solve the mystery.")))
+                                not(isEmptyString()))))
 
         assertTrue(true)
     }

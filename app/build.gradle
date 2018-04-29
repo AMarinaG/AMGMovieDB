@@ -21,6 +21,9 @@ android {
     dataBinding {
         enabled = true
     }
+    packagingOptions {
+        exclude 'META-INF/main.kotlin_module'
+    }
 }
 
 dependencies {
@@ -58,7 +61,11 @@ dependencies {
 
     //test dependencies
     testImplementation deps.junit
-    testImplementation deps.room.testing
+    implementation deps.kotlin.test
+    testImplementation deps.support_test.test_runner
+    testImplementation deps.support_test.test_rules
+    androidTestImplementation deps.lifecycle.testing
+    androidTestImplementation deps.room.testing
     androidTestImplementation deps.support_test.test_runner
     androidTestImplementation deps.support_test.espresso_core
     androidTestImplementation deps.support_test.espresso_contrib, {
